@@ -1,0 +1,38 @@
+food_id,category_id,name,unit,description,img
+1,8,Bluegill,kg,"Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",NULL
+2,8,Brook,kg,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.",NULL
+3,8,Brown,kg,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.",NULL
+4,8,Carp,kg,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.",NULL
+5,8,Rainbown,kg,"Vivamus tortor.",NULL
+6,8,Bluefish,kg,"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",NULL
+7,8,Bonefish,kg,"Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",NULL
+8,8,Salmon,kg,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",NULL
+9,8,Redfish,kg,"Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",NULL
+10,8,Snook,kg,"Donec dapibus. Duis at velit eu est congue elementum.",NULL
+11,8,Striper,kg,"Praesent blandit. Nam nulla.",NULL
+12,8,Tarpon,kg,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",NULL
+13,8,Tuna,kg,"Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh.",NULL
+14,5,Beef,kg,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",NULL
+15,5,Chicken,kg,"Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",NULL
+16,5,Pork,kg,"Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",NULL
+17,5,Lamb,kg,"Integer ac neque.",NULL
+18,5,Duck,kg,"Sed ante. Vivamus tortor. Duis mattis egestas metus.",NULL
+19,7,"Vietnamese Rice",kg,"Praesent id massa id nisl venenatis lacinia.",NULL
+20,7,"Thailand Rice",kg,"Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.",NULL
+21,7,"Indonesia Rice",kg,"Praesent blandit. Nam nulla.",NULL
+22,7,"Philippines Rice",kg,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",NULL
+23,7,"Japanese Rice",kg,"Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",NULL
+24,1,Artichoke,kg,"Integer ac leo.",NULL
+25,1,Asparagus,kg,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",NULL
+26,1,Beetroot,kg,"Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",NULL
+27,1,"Bell pepper",kg,"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",NULL
+28,1,Broccoli,kg,"Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",NULL
+29,1,"Brussels sprouts",kg,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",NULL
+30,1,Cabbage,kg,"Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.",NULL
+31,1,Carrot,kg,"Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",NULL
+32,1,Cauliflower,kg,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",NULL
+33,1,Celery,kg,"Nulla tellus. In sagittis dui vel nisl. Duis ac nibh.",NULL
+34,1,Cucumber,kg,"Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",NULL
+35,1,Lettuce,kg,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",NULL
+36,1,Spinach,kg,"Sed accumsan felis.",NULL
+38,4,"Fresh milk",liter,"This fresh milk is obtained from Dalat highland and keep cool for using in one day",NULL
