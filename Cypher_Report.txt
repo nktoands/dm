@@ -1,0 +1,97 @@
+//1. Alice placed an order
+match(hh:household{name:"Alice"})-[:BELONG_TO]->(a:area)<-[:BELONG_TO]-(fs:foodstore{status:"Open"})
+return a, hh, fs;
+match(hh:household{name:"Alice"})-[:BELONG_TO]->(a:area)<-[:BELONG_TO]-(fs:foodstore{name:"Quan Food Store"})<-[:POSTED_BY]-(fp:foodposted)-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return a, hh, fs, fp, f, fc;
+match(hh:household{name:"Alice"})-[:PLACE]->(o:order)-[:CONTAINS]->(oi:order_item)-[:GET_FROM]->(fp:foodposted)-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return hh, o, oi,fp, f, fc;
+match(fs:foodstore{name:"Quan Food Store"})-[:BELONG_TO]->(a:area)<-[:BELONG_TO]-(s:shipper)
+return fs, a, s;
+match(o:order{name:"Alice order"})-[:CONTAINS]->(oi:order_item)-[:GET_FROM]->(fp:foodposted)-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return fc.name as type, f.name as name,f.unit as unit,  oi.quantity as quantity, fp. price as price, oi.quantity*fp.price as amount
+order by type;
+
+//2. How many orders placed in each area, Red and Yellow?
+match(a:area)<-[:BELONG_TO]-(hh:household)-[:PLACE]->(o:order)
+return a.status as area_status ,count(o) as num_orders;
+
+//3. How much volume of each type of food provided during this time?
+match (fp:foodposted)-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return fc.name as food_type, f.unit as unit, sum(fp.inventory) as volume;
+
+//4. How much volume of each type of food provided during this time in Yellow area?
+match (a:area{status:"Yellow"})<-[:BELONG_TO]-(fs:foodstore)<-[:POSTED_BY]-(fp:foodposted)
+-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return fc.name as food_type, f.unit as unit, sum(fp.inventory) as volume;
+
+//5. How much volume of each type of food provided during this time in Red area?
+match (a:area{status:"Red"})<-[:BELONG_TO]-(fs:foodstore)<-[:POSTED_BY]-(fp:foodposted)
+-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return fc.name as food_type, f.unit as unit, sum(fp.inventory) as volume;
+
+//6. How much volume of each type of food consumed during this time?
+match (oi:order_item)-[:GET_FROM]->(fp:foodposted)-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return fc.name as food_type ,f.unit as unit ,sum(oi.quantity) as volume;
+
+//7. How much volume of each type of food consumed during this time in Yellow area?
+match (a:area{status:"Yellow"})<-[:BELONG_TO]-(hh:household)-[:PLACE]->(o:order)
+-[:CONTAINS]->(oi:order_item)-[:GET_FROM]->(fp:foodposted)-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return fc.name as food_type ,f.unit as unit ,sum(oi.quantity) as volume;
+
+//8. How much volume of each type of food consumed during this time in Red area?
+match (a:area{status:"Red"})<-[:BELONG_TO]-(hh:household)-[:PLACE]->(o:order)
+-[:CONTAINS]->(oi:order_item)-[:GET_FROM]->(fp:foodposted)-[:IS_A]->(f:food)-[:PART_OF]->(fc:foodcategory)
+return fc.name as food_type ,f.unit as unit ,sum(oi.quantity) as volume;
+
+//9. What is the most favor food category?
+match(fc:foodcategory)<-[:PART_OF]-(f:food)<-[:IS_A]-(fp:foodposted)<-[:GET_FROM]-(oi:order_item)
+return fc.name as food_category, sum(oi.quantity) as volume
+order by volume desc
+limit 1;
+
+//10. What is the most favor food?
+match(f:food)<-[:IS_A]-(fp:foodposted)<-[:GET_FROM]-(oi:order_item)
+return f.name as food_name, sum(oi.quantity) as volume
+order by volume desc
+limit 1;
+
+//11. What is the most favor rice?
+match (fc:foodcategory{name:"Rice"})<-[:PART_OF]-(f:food)<-[:IS_A]-(fp:foodposted)<-[:GET_FROM]-(oi:order_item)
+return f.name as food_name, sum(oi.quantity) as volume
+order by volume desc
+limit 1;
+
+//12. What is the busiest date of shippers?
+match (s:shipper)-[:ASSIGNED_TO]->(o:order)
+return o.order_date as order_date, count(o) as num_orders
+order by num_orders desc
+limit 1;
+
+//13. Who is the busiest shipper?
+match (s:shipper)-[:ASSIGNED_TO]->(o:order)
+return s.shipper_id as shipper, s.name, s.email, s.phone, count(o) as num_orders
+order by num_orders desc
+limit 1;
+
+//14. Which store have the most revenue?
+match (fs:foodstore)<-[:POSTED_BY]-(fp:foodposted)<-[:GET_FROM]-(oi:order_item)
+return fs.name as name,fs.owner as owner, fs.phone as phone,fs.email as email, sum(oi.quantity*fp.price) as amount
+order by amount desc
+limit 1;
+
+//15. Which area spend on food the most?
+match (a:area)<-[:BELONG_TO]-(hh:household)-[:PLACE]->(o:order)-[:CONTAINS]->(oi:order_item)-[:GET_FROM]->(fp:foodposted)
+return a.area_id as area_id, sum(oi.quantity*fp.price) as amount
+order by amount desc
+limit 1;
+
+//16. Which household spend for food the most?
+match (hh:household)-[:PLACE]->(o:order)-[:CONTAINS]->(oi:order_item)-[:GET_FROM]->(fp:foodposted)
+return hh.name as name,hh.address as address, hh.phone as phone, hh.email as email, sum(oi.quantity*fp.price) as amount
+order by amount desc
+limit 1;
+
+//17. Yellow or Red area spend more on food?
+match (a:area)<-[:BELONG_TO]- (hh:household)-[:PLACE]->(o:order)-[:CONTAINS]->(oi:order_item)-[:GET_FROM]->(fp:foodposted)
+return a.status as area_status, sum(oi.quantity*fp.price) as amount
+order by amount desc;
